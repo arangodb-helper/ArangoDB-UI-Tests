@@ -10,6 +10,7 @@ require("footerBar/footerBar.js").test(casper, phantomcss, baseUrl);
 require("navigationBar/navigationBar.js").test(casper, phantomcss, baseUrl);
 require("tabApplications/tabApplications.js").test(casper, phantomcss, baseUrl);
 require("tabDashboard/tabDashboard.js").test(casper, phantomcss, baseUrl);
+require("tabAQLEditor/tabAQLEditor.js").test(casper, phantomcss, baseUrl);
 
 casper.then(function chexxor() {
   phantomcss.compareAll();
