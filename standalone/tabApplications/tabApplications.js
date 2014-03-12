@@ -85,4 +85,17 @@ exports.test = function(casper, phantomcss, baseUrl) {
       }
     );
   });
+
+  casper.then(function apiOverview(){
+    casper.click(installed + " span.icon_arangodb_info");
+    casper.waitUntilVisible('#swagger-ui-container',
+      function() {
+        casper.click("#resource_aardvark h2 a");
+        phantomcss.screenshot("#content", "aardvark-api-documentation");
+      },
+      function timeout() {
+        casper.test.fail("Could not display the aardvark api");
+      }
+    );
+  });
 };
