@@ -6,7 +6,7 @@ casper.start("http://localhost:9999/_db/_system/_admin/aardvark/standalone.html#
 casper.viewport(1024,768);
 
 casper.then(function() {
-  phantomcss.screenshot("footer", "footerBar");
+  phantomcss.screenshot("nav", "navigationBar");
 });
 
 casper.then(function end_it(){
@@ -16,3 +16,4 @@ casper.then(function end_it(){
 casper.run(function() {
   phantomcss.exit(phantomcss.getExitStatus());
 });
+

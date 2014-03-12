@@ -2,11 +2,10 @@
 var phantomcss = require("../../phantomcss");
 phantomcss.init();
 
-casper.start("http://localhost:9999/_db/_system/_admin/aardvark/standalone.html#collections");
-casper.viewport(1024,768);
+casper.start();
 
-casper.then(function() {
-  phantomcss.screenshot("footer", "footerBar");
+casper.then(function chexxor() {
+  phantomcss.compareAll();
 });
 
 casper.then(function end_it(){
