@@ -3,7 +3,7 @@ exports.test = function(casper, phantomcss, baseUrl) {
   var installed = "#content #installedList li.tile:first-of-type";
   var available = "#content #availableList li.tile:first-of-type";
 
-  casper.open(baseUrl + "#applications");
+  casper.thenOpen(baseUrl + "#applications");
 
   casper.then(function startingPoint() {
     phantomcss.screenshot("#content", "applicationsContent");

@@ -1,6 +1,6 @@
 /*global casper, exports */
 exports.test = function(casper, phantomcss, baseUrl) {
-  casper.open(baseUrl + "#collections");
+  casper.thenOpen(baseUrl + "#collections");
 
   casper.then(function() {
     phantomcss.screenshot("nav", "navigationBar");
