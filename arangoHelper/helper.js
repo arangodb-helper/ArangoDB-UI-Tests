@@ -6,7 +6,7 @@
     var baseUrl = bUrl.split("/_admin")[0];
     var toCleanUp = [];
     var urls = {
-      collections: baseUrl + "/_api/collection"
+      collections: baseUrl + "/_api/collection",
     };
     var deleteCollection = function() {
       var name = this;
@@ -49,7 +49,19 @@
       });
     };
 
+    var unloadCollection = function(name) {
+      casper.thenOpen(
+        urls.collections + '/' + name + '/unload', {
+          method: "put",
+          dataType: "json"
+        }
+      ).then(function() {
+          toCleanUp.push(deleteCollection.bind(name));
+        }
+      );
+    }
 
+    this.unloadCollection = unloadCollection;
 
     this.createCollection = createCollection;
     this.deleteCollection = function(name) {

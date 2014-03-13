@@ -7,17 +7,6 @@ exports.test = function (casper, phantomcss, baseUrl) {
   var edgeCollectionName = 'myEdgeCollection';
   var imgIndex = -1;
 
-//Helper
-  casper.fillSelectOptionByText = function (selectSelector, text) {
-    this.evaluate(function (sel, setByText) {
-      $(sel + " > option").each(function () {
-        if ($(this).text() === setByText) {
-          $(this).attr('selected', 'selected');
-        }
-      });
-    }, selectSelector, text);
-  };
-
 //initial collections view
   casper.then(function () {
     phantomcss.screenshot("#content", 'tab-collection-' + (++imgIndex) + '--empty-collections');
