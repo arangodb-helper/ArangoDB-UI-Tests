@@ -55,9 +55,6 @@
           method: "put",
           dataType: "json"
         }
-      ).then(function() {
-          toCleanUp.push(deleteCollection.bind(name));
-        }
       );
     }
 
