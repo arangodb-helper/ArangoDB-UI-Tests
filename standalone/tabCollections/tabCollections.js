@@ -234,7 +234,24 @@ exports.test = function (casper, phantomcss, baseUrl) {
       phantomcss.screenshot('#show-collection', 'tab-collection-' + (++imgIndex) + '--info-index-document-collection');
     }
   );
-
+//close info modal
+  casper.then(
+    function() {
+      casper.click('#closeBtnInfoView');
+      casper.waitWhileVisible('#show-collection',
+        function success() {
+          phantomcss.screenshot(
+            '#content',
+            0,
+            '#show-collection-id',
+            'tab-collection-' + (++imgIndex) + '--info-document-collection');
+        },
+        function timeout() {
+          casper.test.fail('#modal failed');
+        }
+      );
+    }
+  );
 
 //delete document collection
   casper.then(
