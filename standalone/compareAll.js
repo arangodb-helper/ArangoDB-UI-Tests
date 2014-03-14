@@ -18,6 +18,7 @@ require("tabCollections/tabCollections.js").test(casper, phantomcss, baseUrl);
 require("tabCollections/tabCollectionsSorting.js").test(casper, phantomcss, baseUrl, helper);
 require("tabCollections/tabCollectionsSearch.js").test(casper, phantomcss, baseUrl, helper);
 require("tabDB/tabDB.js").test(casper, phantomcss, baseUrl, helper);
+require("tabTools/tabToolsUserManagement.js").test(casper, phantomcss, baseUrl, helper);
 
 casper.then(function checkImages() {
   phantomcss.compareAll();
