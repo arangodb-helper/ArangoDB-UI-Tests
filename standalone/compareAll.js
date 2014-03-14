@@ -21,6 +21,7 @@ require("tabCollections/tabCollectionsSearch.js").test(casper, phantomcss, baseU
 require("tabDB/tabDB.js").test(casper, phantomcss, baseUrl, helper);
 require("tabTools/tabToolsUserManagement.js").test(casper, phantomcss, baseUrl, helper);
 require("tabCollections/tabCollectionsCollection.js").test(casper, phantomcss, baseUrl, helper);
+require("tabTools/tabToolsLogs.js").test(casper, phantomcss, baseUrl, helper);
 
 casper.then(function checkImages() {
   phantomcss.compareAll();
