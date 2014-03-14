@@ -11,6 +11,7 @@ casper.viewport(1024,768);
 require("footerBar/footerBar.js").test(casper, phantomcss, baseUrl);
 require("navigationBar/navigationBar.js").test(casper, phantomcss, baseUrl);
 require("tabApplications/tabApplications.js").test(casper, phantomcss, baseUrl);
+require("tabAPI/tabAPI.js").test(casper, phantomcss, baseUrl, helper);
 require("tabDashboard/tabDashboard.js").test(casper, phantomcss, baseUrl);
 require("tabAQLEditor/tabAQLEditor.js").test(casper, phantomcss, baseUrl);
 require("tabShell/tabShell.js").test(casper, phantomcss, baseUrl);
