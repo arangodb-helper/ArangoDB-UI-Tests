@@ -7,7 +7,7 @@ phantomcss.init();
 casper.start();
 var helper = new Helper(casper, baseUrl);
 casper.viewport(1024,768);
-
+/*
 require("footerBar/footerBar.js").test(casper, phantomcss, baseUrl);
 require("navigationBar/navigationBar.js").test(casper, phantomcss, baseUrl);
 require("tabApplications/tabApplications.js").test(casper, phantomcss, baseUrl);
@@ -20,6 +20,9 @@ require("tabCollections/tabCollectionsSorting.js").test(casper, phantomcss, base
 require("tabCollections/tabCollectionsSearch.js").test(casper, phantomcss, baseUrl, helper);
 require("tabDB/tabDB.js").test(casper, phantomcss, baseUrl, helper);
 require("tabTools/tabToolsUserManagement.js").test(casper, phantomcss, baseUrl, helper);
+*/
+require("tabGraph/tabGraph.js").test(casper, phantomcss, baseUrl, helper);
+require("tabGraph/tabGraphManagement.js").test(casper, phantomcss, baseUrl, helper);
 
 casper.then(function checkImages() {
   phantomcss.compareAll();

@@ -7,13 +7,23 @@
     var toCleanUp = [];
     var urls = {
       collections: baseUrl + "/_api/collection",
+      graphs: baseUrl + "/_api/graph"
     };
+
     var deleteCollection = function() {
       var name = this;
       casper.thenOpen(urls.collections + "/" + name, {
         method: "delete"
       });
     };
+
+    var deleteGraph = function() {
+      var name = this;
+      casper.thenOpen(urls.graphs + "/" + name, {
+        method: "delete"
+      });
+    };
+
     var createCollection = function(name, type, options) {
       if (!name) {
         throw "Please give a name";
@@ -39,6 +49,32 @@
         toCleanUp.push(deleteCollection.bind(name));
       });
     };
+
+    var createGraph = function(name, vs, es) {
+      if (!name) {
+        throw "Please give a name";
+      }
+      if (!vs) {
+        throw "Please give a vertex collection";
+      }
+      if (!es) {
+        throw "Please give a edge collection";
+      }
+      var data = {
+        _key: name,
+        vertices: vs,
+        edges: es
+      };
+
+      casper.thenOpen(urls.graphs, {
+        method: "post",
+        dataType: "json",
+        data: JSON.stringify(data)
+      }).then(function() {
+        toCleanUp.push(deleteGraph.bind(name));
+      });
+    };
+
     var cleanup = function() {
       casper.then(function() {
         var i;
@@ -56,10 +92,14 @@
           dataType: "json"
         }
       );
-    }
+    };
 
     this.unloadCollection = unloadCollection;
 
+    this.createGraph = createGraph;
+    this.deleteGraph = function(name) {
+      return deleteGraph.apply(name);
+    };
     this.createCollection = createCollection;
     this.deleteCollection = function(name) {
       return deleteCollection.apply(name);
