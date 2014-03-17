@@ -3,4 +3,6 @@ mkdir cssTestData cssTestApps
 ./arangod -c arangod.conf --pid-file test.pid --log.requests-file req.log &
 sleep 5
 casperjs test standalone/compareAll.js
+res=$?
 kill `cat test.pid`
+exit $res
