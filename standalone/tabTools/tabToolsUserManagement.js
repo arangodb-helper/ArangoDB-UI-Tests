@@ -6,7 +6,8 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     newUsername2    = 'myOtherDBUser',
     newName         = 'Papp Nase',
     newName2        = 'Mr Papp Nase',
-    newPassword     = 'blub';
+    newPassword     = 'blub',
+    component       = '[tabToolsUserManagement] => ';
 
 
 
@@ -36,7 +37,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail(component + 'modal open failed');
         }
       );
     }
@@ -68,7 +69,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal close failed');
+          casper.test.fail(component + 'modal close failed (submit create user)');
         }
       );
     }
@@ -85,7 +86,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail(component + 'modal open failed');
         }
       );
     }
@@ -122,7 +123,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal close failed');
+          casper.test.fail(component + 'modal close failed (close create same user');
         }
       );
     }
@@ -139,7 +140,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail(component + 'modal open failed');
         }
       );
     }
@@ -170,7 +171,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal close failed');
+          casper.test.fail(component + 'modal close failed (fill create dialog)');
         }
       );
     }
@@ -187,7 +188,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail(component + 'modal open failed');
         }
       );
     }
@@ -217,7 +218,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal close failed');
+          casper.test.fail(component + 'modal close failed (submit edit user)');
         }
       );
     }
@@ -234,7 +235,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail(component + 'modal open failed (delete user pt1)');
         }
       );
     }
@@ -251,7 +252,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail(component + 'modal open failed');
         }
       );
     }
@@ -268,7 +269,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal close failed');
+          casper.test.fail(component + 'modal close failed (finally delete user)');
         }
       );
     }

@@ -9,10 +9,14 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   casper.thenOpen(baseUrl + "#collections");
 
   //*** helper ***
-  var screenshot = function(id) {
+  var screenshot = function(id, sel) {
+    var selector = '#';
+    if (sel === 'class') {
+      selector = '.';
+    }
     casper.then(
       function() {
-        phantomcss.screenshot("#"+id, 'tab-collections-collection');
+        phantomcss.screenshot(selector + id, 'tab-collections-collection');
       }
     );
   };
@@ -249,7 +253,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   );
 
   //redone
-  screenshot('jsoneditor-contextmenu');
+  screenshot('jsoneditor-contextmenu', 'class');
 
   //change to mode code
   casper.then(

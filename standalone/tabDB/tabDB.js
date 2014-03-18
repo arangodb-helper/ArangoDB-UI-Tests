@@ -66,7 +66,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal close failed');
+          casper.test.fail('modal close failed (create database)');
         }
       );
     }
@@ -120,7 +120,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal close failed');
+          casper.test.fail('modal close failed (create same database)');
         }
       );
     }
@@ -154,7 +154,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal close failed');
+          casper.test.fail('modal close failed (delete _system database)');
         }
       );
     }
@@ -203,7 +203,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal close failed');
+          casper.test.fail('modal close failed (delete database');
         }
       );
     }
