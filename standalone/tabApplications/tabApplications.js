@@ -1,7 +1,7 @@
 /*global casper, exports */
 exports.test = function(casper, phantomcss, baseUrl) {
-  var installed = "#content #installedList li.tile:first-of-type";
-  var available = "#content #availableList li.tile:first-of-type";
+  var installed = "#content #installedList div.tile:first-of-type";
+  var available = "#content #availableList div.tile:first-of-type";
 
   casper.thenOpen(baseUrl + "#applications");
 
