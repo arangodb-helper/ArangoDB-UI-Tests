@@ -16,12 +16,12 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.click('#newCollection');
-      casper.waitUntilVisible('#add-collection',
+      casper.waitUntilVisible('#modal-dialog',
         function success() {
-          phantomcss.screenshot('#add-collection', 'tab-collection-' + (++imgIndex) + '--add-collection-modal');
+          phantomcss.screenshot('#modal-dialog', 'tab-collection-' + (++imgIndex) + '--add-collection-modal');
         },
         function timeout() {
-          casper.test.fail('#add-collection modal failed');
+          casper.test.fail('#modal-dialog modal failed');
         }
       );
     }
@@ -31,7 +31,7 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.click('a.accordion-toggle');
-      phantomcss.screenshot('#add-collection', 'tab-collection-' + (++imgIndex) + '--add-collection-modal-advanced-options');
+      phantomcss.screenshot('#modal-dialog', 'tab-collection-' + (++imgIndex) + '--add-collection-modal-advanced-options');
     }
   )
 
@@ -39,25 +39,25 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.fillSelectors(
-        '#add-collection', {
+        '#modal-dialog', {
           '#new-collection-name': documentCollectionName,
           '#new-collection-size': '2'
         }
       );
-      phantomcss.screenshot('#add-collection', 'tab-collection-' + (++imgIndex) + '--filled-add-collection-modal-document');
+      phantomcss.screenshot('#modal-dialog', 'tab-collection-' + (++imgIndex) + '--filled-add-collection-modal-document');
     }
   );
 
 //save new collection
   casper.then(
     function () {
-      casper.click('#save-new-collection');
-      casper.waitWhileVisible('#add-collection',
+      casper.clickLabel('Save', 'button');
+      casper.waitWhileVisible('#modal-dialog',
         function success() {
           phantomcss.screenshot('#content', 'tab-collection-' + (++imgIndex) + '--additional-document-collection');
         },
         function timeout() {
-          casper.test.fail('#add-collection modal close failed (document)');
+          casper.test.fail('#modal-dialog modal close failed (document)');
         }
       );
     }
@@ -67,22 +67,22 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.click('#newCollection');
-      casper.waitUntilVisible('#add-collection',
+      casper.waitUntilVisible('#modal-dialog',
         function success() {
           casper.evaluate(function () {
             document.getElementById('new-collection-type').selectedIndex = "1";
           });
 
           casper.fillSelectors(
-            '#add-collection', {
+            '#modal-dialog', {
               '#new-collection-name': edgeCollectionName
             }
           );
-          phantomcss.screenshot('#add-collection', 'tab-collection-' + (++imgIndex) + '--filled-add-collection-modal-edge');
+          phantomcss.screenshot('#modal-dialog', 'tab-collection-' + (++imgIndex) + '--filled-add-collection-modal-edge');
 
         },
         function timeout() {
-          casper.test.fail('#add-collection modal failed');
+          casper.test.fail('#modal-dialog modal open failed (edge)');
         }
       );
     }
@@ -91,13 +91,13 @@ exports.test = function (casper, phantomcss, baseUrl) {
 //overview with 2 collections
   casper.then(
     function () {
-      casper.click('#save-new-collection');
-      casper.waitWhileVisible('#add-collection',
+      casper.clickLabel('Save', 'button');
+      casper.waitWhileVisible('#modal-dialog',
         function success() {
           phantomcss.screenshot('#content', 'tab-collection-' + (++imgIndex) + '--additional-edge-collection');
         },
         function timeout() {
-          casper.test.fail('#add-collection modal close failed (edge)');
+          casper.test.fail('#modal-dialog modal close failed (edge)');
         }
       );
     }
@@ -107,10 +107,10 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.click('#editCollection_' + documentCollectionName);
-      casper.waitUntilVisible('#change-collection',
+      casper.waitUntilVisible('#modal-dialog',
         function success() {
           phantomcss.screenshot(
-            '#change-collection',
+            '#modal-dialog',
             0,
             '#change-collection-id',
             'tab-collection-' + (++imgIndex) + '--edit-document-collection');
@@ -126,12 +126,12 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.fillSelectors(
-        '#change-collection', {
+        '#modal-dialog', {
           '#change-collection-name': editedDocumentCollectionName
         }
       );
-      casper.click('#save-modified-collection');
-      casper.waitWhileVisible('#change-collection',
+      casper.clickLabel('Save', 'button');
+      casper.waitWhileVisible('#modal-dialog',
         function success() {
           phantomcss.screenshot('#content', 'tab-collection-' + (++imgIndex) + '--overview-edited-document-collection');
         },
@@ -147,10 +147,10 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.click('#editCollection_' + editedDocumentCollectionName);
-      casper.waitUntilVisible('#change-collection',
+      casper.waitUntilVisible('#modal-dialog',
         function success() {
-          casper.click('#unload-modified-collection');
-          casper.waitWhileVisible('#change-collection',
+          casper.clickLabel('Unload', 'button');
+          casper.waitWhileVisible('#modal-dialog',
             function success() {
               phantomcss.screenshot('#content', 'tab-collection-' + (++imgIndex) + '--overview-unloaded-document-collection');
             },
@@ -171,10 +171,10 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.click('#editCollection_' + editedDocumentCollectionName);
-      casper.waitUntilVisible('#change-collection',
+      casper.waitUntilVisible('#modal-dialog',
         function success() {
-          casper.click('#load-modified-collection');
-          casper.waitWhileVisible('#change-collection',
+          casper.clickLabel('Load', 'button');
+          casper.waitWhileVisible('#modal-dialog',
             function success() {
               phantomcss.screenshot('#content', 'tab-collection-' + (++imgIndex) + '--overview-loaded-document-collection');
             },
@@ -246,7 +246,7 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.click('#editCollection_' + editedDocumentCollectionName);
-      casper.waitUntilVisible('#change-collection',
+      casper.waitUntilVisible('#modal-dialog',
         function success() {
         },
         function timeout() {
@@ -257,11 +257,11 @@ exports.test = function (casper, phantomcss, baseUrl) {
   );
   casper.then(
     function () {
-      casper.click('#delete-modified-collection');
-      casper.waitUntilVisible('#reallyDeleteColDiv',
+      casper.clickLabel('Delete', 'button');
+      casper.waitUntilVisible('#modal-delete-confirmation',
         function success() {
           phantomcss.screenshot(
-            '#change-collection',
+            '#modal-dialog',
             0,
             '#change-collection-id',
             'tab-collection-' + (++imgIndex) + '--confirm-delete-dialog');
@@ -274,8 +274,8 @@ exports.test = function (casper, phantomcss, baseUrl) {
   );
   casper.then(
     function () {
-      casper.click('#confirmDeleteCollection');
-      casper.waitWhileVisible('#change-collection',
+      casper.click('#modal-confirm-delete');
+      casper.waitWhileVisible('#modal-dialog',
         function success() {
         },
         function timeout() {
@@ -289,7 +289,7 @@ exports.test = function (casper, phantomcss, baseUrl) {
   casper.then(
     function () {
       casper.click('#editCollection_' + edgeCollectionName);
-      casper.waitUntilVisible('#change-collection',
+      casper.waitUntilVisible('#modal-dialog',
         function success() {
         },
         function timeout() {
@@ -300,8 +300,8 @@ exports.test = function (casper, phantomcss, baseUrl) {
   );
   casper.then(
     function () {
-      casper.click('#delete-modified-collection');
-      casper.waitUntilVisible('#reallyDeleteColDiv',
+      casper.clickLabel('Delete', 'button');
+      casper.waitUntilVisible('#modal-delete-confirmation',
         function success() {
         },
         function timeout() {
@@ -312,10 +312,10 @@ exports.test = function (casper, phantomcss, baseUrl) {
   );
   casper.then(
     function () {
-      casper.click('#confirmDeleteCollection');
-      casper.waitWhileVisible('#change-collection',
+      casper.click('#modal-confirm-delete');
+      casper.waitWhileVisible('#modal-dialog',
         function success() {
-          phantomcss.screenshot('#change-collection', 'tab-collection-' + (++imgIndex) + '--all-collections-deleted');
+          phantomcss.screenshot('#modal-dialog', 'tab-collection-' + (++imgIndex) + '--all-collections-deleted');
         },
         function timeout() {
           casper.test.fail('modal failed');

@@ -33,23 +33,23 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#createUser');
       this.waitUntilVisible(
-        '#createUserModal',
+        '#modal-dialog',
         function success() {
         },
         function timeout() {
-          casper.test.fail(component + 'modal open failed');
+          casper.test.fail(component + 'modal open failed (01)');
         }
       );
     }
   );
 
-  screenshot('createUserModal');
+  screenshot('modal-dialog');
 
   //fill create dialog
   casper.then(
     function () {
       casper.fillSelectors(
-        '#createUserModal', {
+        '#modal-dialog', {
           '#newUsername': newUsername1,
           '#newName': newName,
           '#newPassword': newPassword
@@ -58,12 +58,12 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     }
   );
 
-  screenshot('createUserModal');
+  screenshot('modal-dialog');
 
   //submit
   casper.then(
     function () {
-      casper.click('#submitCreateUser');
+      casper.clickLabel('Create');
       this.waitWhileVisible(
         '.modal-backdrop',
         function success() {
@@ -82,11 +82,11 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#createUser');
       this.waitUntilVisible(
-        '#createUserModal',
+        '#modal-dialog',
         function success() {
         },
         function timeout() {
-          casper.test.fail(component + 'modal open failed');
+          casper.test.fail(component + 'modal open failed (02)');
         }
       );
     }
@@ -94,7 +94,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   casper.then(
     function () {
       casper.fillSelectors(
-        '#createUserModal', {
+        '#modal-dialog', {
           '#newUsername': newUsername1,
           '#newName': newName,
           '#newPassword': newPassword
@@ -103,16 +103,16 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     }
   );
 
-  screenshot('createUserModal');
+  screenshot('modal-dialog');
 
   //create user (nothing happens atm)
   casper.then(
     function () {
-      casper.click('#submitCreateUser');
+      casper.clickLabel('Create');
     }
   );
 
-  screenshot('createUserModal');
+  screenshot('modal-dialog');
 
   //close modal
   casper.then(
@@ -136,23 +136,23 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#createUser');
       this.waitUntilVisible(
-        '#createUserModal',
+        '#modal-dialog',
         function success() {
         },
         function timeout() {
-          casper.test.fail(component + 'modal open failed');
+          casper.test.fail(component + 'modal open failed (03)');
         }
       );
     }
   );
 
-  screenshot('createUserModal');
+  screenshot('modal-dialog');
 
   //fill create dialog
   casper.then(
     function () {
       casper.fillSelectors(
-        '#createUserModal', {
+        '#modal-dialog', {
           '#newUsername': newUsername2
         }
       );
@@ -160,12 +160,12 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     }
   );
 
-  screenshot('createUserModal');
+  screenshot('modal-dialog');
 
   //submit
   casper.then(
     function () {
-      casper.click('#submitCreateUser');
+      casper.clickLabel('Create', 'button');
       this.waitWhileVisible(
         '.modal-backdrop',
         function success() {
@@ -184,22 +184,22 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#' + newUsername1 + '_edit-user');
       this.waitUntilVisible(
-        '#editUserModal',
+        '#modal-dialog',
         function success() {
         },
         function timeout() {
-          casper.test.fail(component + 'modal open failed');
+          casper.test.fail(component + 'modal open failed (04)');
         }
       );
     }
   );
 
-  screenshot('editUserModal');
+  screenshot('modal-dialog');
 
   casper.then(
     function () {
       casper.fillSelectors(
-        '#editUserModal', {
+        '#modal-dialog', {
           '#editName': newName2
         }
       );
@@ -207,12 +207,12 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     }
   );
 
-  screenshot('editUserModal');
+  screenshot('modal-dialog');
 
   //submit
   casper.then(
     function () {
-      casper.click('#submitEditUser');
+      casper.clickLabel('Save', 'button');
       this.waitWhileVisible(
         '.modal-backdrop',
         function success() {
@@ -231,7 +231,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#' + newUsername2 + '_edit-user');
       this.waitUntilVisible(
-        '#editUserModal',
+        '#modal-dialog',
         function success() {
         },
         function timeout() {
@@ -241,29 +241,29 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     }
   );
 
-  screenshot('editUserModal');
+  screenshot('modal-dialog');
 
   //click delete
   casper.then(
     function() {
-      this.click('#deleteUser');
+      this.clickLabel('Delete', 'button');
       this.waitUntilVisible(
-        '#deleteUserModal',
+        '#modal-delete-confirmation',
         function success() {
         },
         function timeout() {
-          casper.test.fail(component + 'modal open failed');
+          casper.test.fail(component + 'modal open failed (05)');
         }
       );
     }
   );
 
-  screenshot('deleteUserModal');
+  screenshot('modal-dialog');
 
   //delete finally
   casper.then(
     function() {
-      this.click('#submitDeleteUser');
+      this.click('#modal-confirm-delete');
       this.waitWhileVisible(
         '.modal-backdrop',
         function success() {

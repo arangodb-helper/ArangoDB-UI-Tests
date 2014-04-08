@@ -30,23 +30,23 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#createDatabase');
       this.waitUntilVisible(
-        '#createDatabaseModal',
+        '#modal-dialog',
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail('modal open failed (tabDB01)');
         }
       );
     }
   );
 
-  screenshot('createDatabaseModal');
+  screenshot('modal-dialog');
 
   //fill create dialog
   casper.then(
     function () {
       casper.fillSelectors(
-        '#createDatabaseModal', {
+        '#modal-dialog', {
           '#newDatabaseName': newDB1,
           '#newUser': user,
           '#newPassword': password
@@ -55,12 +55,12 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     }
   );
 
-  screenshot('createDatabaseModal');
+  screenshot('modal-dialog');
 
   //create database
   casper.then(
     function () {
-      casper.click('#submitCreateDatabase');
+      casper.clickLabel('Create', 'button');
       this.waitWhileVisible(
         '.modal-backdrop',
         function success() {
@@ -79,11 +79,11 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#createDatabase');
       this.waitUntilVisible(
-        '#createDatabaseModal',
+        '#modal-dialog',
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail('modal open failed (tabDB02)');
         }
       );
     }
@@ -91,7 +91,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   casper.then(
     function () {
       casper.fillSelectors(
-        '#createDatabaseModal', {
+        '#modal-dialog', {
           '#newDatabaseName': newDB1,
           '#newUser': user,
           '#newPassword': password
@@ -100,21 +100,21 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     }
   );
 
-  screenshot('createDatabaseModal');
+  screenshot('modal-dialog');
 
   //create database (throws notification)
   casper.then(
     function () {
-      casper.click('#submitCreateDatabase');
+      casper.clickLabel('Create', 'button');
     }
   );
 
-  screenshot('createDatabaseModal');
+  screenshot('modal-dialog');
 
   //close modal
   casper.then(
     function() {
-      this.click(".button-close");
+      this.click("#modalButton0");
       this.waitWhileVisible(
         '.modal-backdrop',
         function success() {
@@ -133,7 +133,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click("#_system_edit-database");
       this.waitUntilVisible(
-        '#editDatabaseModal',
+        '#modal-dialog',
         function success() {
         },
         function timeout() {
@@ -143,12 +143,12 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     }
   );
 
-  screenshot('editDatabaseModal');
+  screenshot('modal-dialog');
 
   //close modal
   casper.then(
     function() {
-      this.click('#editDatabaseModal .button-close');
+      this.click('#modal-dialog .button-close');
       this.waitWhileVisible(
         '.modal-backdrop',
         function success() {
@@ -165,39 +165,39 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#' + newDB1 + '_edit-database');
       this.waitUntilVisible(
-        '#editDatabaseModal',
+        '#modal-dialog',
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail('modal open failed (tabDB03)');
         }
       );
     }
   );
 
-  screenshot('editDatabaseModal');
+  screenshot('modal-dialog');
 
   //click delete
   casper.then(
     function() {
-      this.click('#deleteDatabase');
+      this.clickLabel('Delete', 'button');
       this.waitUntilVisible(
-        '#deleteDatabaseModal',
+        '#modal-delete-confirmation',
         function success() {
         },
         function timeout() {
-          casper.test.fail('modal open failed');
+          casper.test.fail('modal open failed (tabDB04)');
         }
       );
     }
   );
 
-  screenshot('deleteDatabaseModal');
+  screenshot('modal-dialog');
 
   //delete it finally
   casper.then(
     function() {
-      this.click('#submitDeleteDatabase');
+      this.click('#modal-confirm-delete');
       this.waitWhileVisible(
         '.modal-backdrop',
         function success() {

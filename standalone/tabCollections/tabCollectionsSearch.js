@@ -37,7 +37,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
           this.click('#checkSystem');
         },
         function timeout() {
-          casper.test.fail('#add-collection modal failed');
+          casper.test.fail('#collectionsDropdown2 modal failed');
         }
       );
     }

@@ -37,9 +37,9 @@ exports.test = function(casper, phantomcss, baseUrl) {
 
   casper.then(function modifyInstalled() {
     casper.click(installed + " span.icon_arangodb_settings2");
-    casper.waitUntilVisible('#change-foxx',
+    casper.waitUntilVisible('#modal-dialog',
       function success() {
-        phantomcss.screenshot("#change-foxx", "modifyApplicationDialog");
+        phantomcss.screenshot("#modal-dialog", "modifyApplicationDialog");
       },
       function timeout() {
         casper.test.fail("Could not load dialog to modify an app");
@@ -48,15 +48,15 @@ exports.test = function(casper, phantomcss, baseUrl) {
   });
 
   casper.then(function fillADifferentMount(){
-    casper.fillSelectors("#change-foxx", {
+    casper.fillSelectors("#modal-dialog", {
       "input#change-mount-point": "/newPath"
     });
-    phantomcss.screenshot("#change-foxx", "modifiedApplicationDialog");
+    phantomcss.screenshot("#modal-dialog", "modifiedApplicationDialog");
   });
 
   casper.then(function closeModifyDialog(){
     casper.click("div.modal-header button.close");
-    casper.waitWhileVisible('#change-foxx',
+    casper.waitWhileVisible('#modal-dialog',
       undefined,
       function timeout() {
         casper.test.fail("Could not close dialog for app modification");
@@ -66,9 +66,9 @@ exports.test = function(casper, phantomcss, baseUrl) {
 
   casper.then(function installed() {
     casper.click(available + " button.install");
-    casper.waitUntilVisible('#install-foxx',
+    casper.waitUntilVisible('#modal-dialog',
       function success() {
-        phantomcss.screenshot("#install-foxx", "installApplicationDialog");
+        phantomcss.screenshot("#modal-dialog", "installApplicationDialog");
       },
       function timeout() {
         casper.test.fail("Could not load dialog to install an app");
