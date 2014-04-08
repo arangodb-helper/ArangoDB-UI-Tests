@@ -34,7 +34,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#loginfo');
       this.waitUntilVisible(
-        'li.active #loginfo',
+        'button.arango-active-tab #loginfo',
         function() {},
         function timeout() {
           casper.test.fail('open logs info view failed');
@@ -50,7 +50,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#logerror');
       this.waitUntilVisible(
-        'li.active #logerror',
+        'button.arango-active-tab #logerror',
         function() {},
         function timeout() {
           casper.test.fail('open logs error view failed');
@@ -66,7 +66,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#logwarning');
       this.waitUntilVisible(
-        'li.active #logwarning',
+        'button.arango-active-tab #logwarning',
         function() {},
         function timeout() {
           casper.test.fail('open logs warnings view failed');
@@ -82,7 +82,7 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
     function() {
       this.click('#logdebug');
       this.waitUntilVisible(
-        'li.active #logdebug',
+        'button.arango-active-tab #logdebug',
         function() {},
         function timeout() {
           casper.test.fail('open logs debug view failed');
