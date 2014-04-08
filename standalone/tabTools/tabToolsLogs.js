@@ -33,8 +33,8 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   casper.then(
     function() {
       this.click('#loginfo');
-      this.waitUntilVisible(
-        'button.arango-active-tab #loginfo',
+      this.waitForSelector(
+        '#loginfo.arangodb-tabbar.arango-active-tab',
         function() {},
         function timeout() {
           casper.test.fail('open logs info view failed');
@@ -49,8 +49,8 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   casper.then(
     function() {
       this.click('#logerror');
-      this.waitUntilVisible(
-        'button.arango-active-tab #logerror',
+      this.waitForSelector(
+        '#logerror.arangodb-tabbar.arango-active-tab',
         function() {},
         function timeout() {
           casper.test.fail('open logs error view failed');
@@ -65,8 +65,8 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   casper.then(
     function() {
       this.click('#logwarning');
-      this.waitUntilVisible(
-        'button.arango-active-tab #logwarning',
+      this.waitForSelector(
+        '#logwarning.arangodb-tabbar.arango-active-tab',
         function() {},
         function timeout() {
           casper.test.fail('open logs warnings view failed');
@@ -81,8 +81,8 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   casper.then(
     function() {
       this.click('#logdebug');
-      this.waitUntilVisible(
-        'button.arango-active-tab #logdebug',
+      this.waitForSelector(
+        '#logdebug.arangodb-tabbar.arango-active-tab ',
         function() {},
         function timeout() {
           casper.test.fail('open logs debug view failed');
