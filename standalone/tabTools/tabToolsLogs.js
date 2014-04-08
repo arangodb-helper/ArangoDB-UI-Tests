@@ -32,9 +32,9 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   //info tab
   casper.then(
     function() {
-      this.click('#info-switch');
+      this.click('#loginfo');
       this.waitUntilVisible(
-        'li.active #info-switch',
+        'li.active #loginfo',
         function() {},
         function timeout() {
           casper.test.fail('open logs info view failed');
@@ -48,9 +48,9 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   //error tab
   casper.then(
     function() {
-      this.click('#error-switch');
+      this.click('#logerror');
       this.waitUntilVisible(
-        'li.active #error-switch',
+        'li.active #logerror',
         function() {},
         function timeout() {
           casper.test.fail('open logs error view failed');
@@ -64,9 +64,9 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   //info tab
   casper.then(
     function() {
-      this.click('#warning-switch');
+      this.click('#logwarning');
       this.waitUntilVisible(
-        'li.active #warning-switch',
+        'li.active #logwarning',
         function() {},
         function timeout() {
           casper.test.fail('open logs warnings view failed');
@@ -80,9 +80,9 @@ exports.test = function (casper, phantomcss, baseUrl, helper) {
   //info tab
   casper.then(
     function() {
-      this.click('#debug-switch');
+      this.click('#logdebug');
       this.waitUntilVisible(
-        'li.active #debug-switch',
+        'li.active #logdebug',
         function() {},
         function timeout() {
           casper.test.fail('open logs debug view failed');
